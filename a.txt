@@ -1,0 +1,57 @@
+printf("PRODUCCIONES ELIJA: \n");
+	cout << "\nP(" << 1 << ") = " << sp[0] << " -> " << p[0] << "\n\n";
+	do
+	{
+
+		for (size_t i = 0; i < np; i++)
+		{
+			cout << "P[" << i + 1 << "] = " << sp[i] << " -> " << p[i] << "\n";
+		}
+
+		cout << "\n";
+
+		cin >> op;
+		op = op - 1;
+
+		for (size_t i = 0; i < np; i++)
+		{
+			if (p[i] == p[op])
+			{
+				int ls = strlen(sp[op].c_str());
+				if (ls <= 1)
+				{
+					lon = strlen(cadena.c_str());
+					for (int i = 0; i < lon; i++)
+						if ((cadena.c_str()[i]) != sp[op].c_str()[0])
+						{
+							print[j] = cadena.c_str()[i];
+							j++;
+						}
+						else
+						{
+
+							for (size_t i = 0; i < strlen(p[op].c_str()); i++)
+							{
+								print[j + i] = p[op].c_str()[i];
+							}
+							j += strlen(p[op].c_str());
+						}
+
+					print[j] = '\0';
+					cout << "\n" << cadena << "  P(" << (op + 1) << ") -> " << print << "\n\n";
+					cadena = print;
+
+				}
+
+				else if (ls > 1)
+				{
+					string cadenar = cadena, scadena = "";
+					cadenar = cadena;
+					scadena = cadenar.replace(cadenar.find(sp[op]), strlen(sp[op].c_str()), p[op]).c_str();
+					cout << "\n" << cadena << "  P(" << (op + 1) << ") -> " << scadena << "\n\n";
+					cadena = cadenar;
+				}
+				j = 0;
+			}
+		}
+	} while (true);
